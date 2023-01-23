@@ -2,7 +2,7 @@
     margin: 5rem
     background-color: white
 
-    @include default-border-radius
+    // @include default-border-radius
     overflow: hidden
 
     display: grid
@@ -10,12 +10,12 @@
     flex: 1
 
     @include respond(tab-land)
-        margin: 3rem
+        margin: 0
         grid-template-columns: 1fr
         grid-template-rows: 3fr auto
 
-    @include respond(tab-port)
-        margin: 2rem
+    // @include respond(tab-port)
+        // margin: 2rem
 
     // @include respond(phone)
     //     margin: 1rem

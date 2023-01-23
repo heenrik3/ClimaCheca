@@ -1,21 +1,4 @@
-export function parseAPIData(data) {
-  return {
-    coords: { ...data.coord },
-    name: data.name,
-    country: data.sys.country,
-    sunrise: data.sys.sunrise,
-    sunset: data.sys.sunset,
-    visibility: data.visibility,
-    wind: data.wind.speed,
-    temperature: { ...data.main },
-  }
-}
-
-export function toCelsius(temp) {
-  return Math.round(temp - 273.15)
-}
-
-export const countries = {
+const countries = {
   AF: 'Afeganistão',
   AL: 'Albânia',
   DZ: 'Argélia',
@@ -265,4 +248,82 @@ export const countries = {
   ZM: 'Zâmbia',
   ZW: 'Zimbábue',
   AX: 'Ilhas Åland',
+}
+
+const climates = {
+  clouds: 'Nublado',
+  clear: 'Céu Limpo',
+  fog: 'Névoa',
+  mist: 'Neblina',
+  haze: 'Névoa',
+  rain: 'Chuvoso',
+  drizzle: 'Garoa',
+}
+
+export function toCelsius(temp) {
+  return Math.round(temp - 273.15)
+}
+
+export function parseAPIData(data) {
+  const climate = climates[data.weather[0].main.toLowerCase()]
+  const description = climate ? climate : ''
+  const art = climate
+    ? `${data.weather[0].main.toLowerCase()}.png`
+    : 'clouds.png'
+
+  return {
+    coords: { ...data.coord },
+    name: data.name,
+    country: countries[data.sys.country],
+    sunrise: new Date(data.sys.sunrise * 1000).toLocaleTimeString('pt-BR'),
+    sunset: new Date(data.sys.sunset * 1000).toLocaleTimeString('pt-BR'),
+    description: description,
+    art: art,
+    visibility: data.visibility,
+    wind: data.wind.speed,
+    pressure: data.main.pressure,
+    humidity: data.main.humidity,
+    temperature: {
+      now: toCelsius(data.main.temp),
+      min: toCelsius(data.main.temp_min),
+      max: toCelsius(data.main.temp_max),
+      feels: toCelsius(data.main.feels_like),
+    },
+  }
+}
+
+async function fetchData(url) {
+  try {
+    const res = await fetch(url)
+
+    const data = await res.json()
+
+    if (data.cod === '404') throw new Error('Not Found')
+
+    // console.log(data)
+
+    return data
+  } catch (err) {
+    console.clear()
+    return false
+  }
+}
+
+export async function fetchByPosition(pos) {
+  const url = process.env.REACT_APP_API_COORDS.replace(
+    '<LAT>',
+    pos.coords.latitude
+  ).replace('<LON>', pos.coords.longitude)
+
+  const data = await fetchData(url)
+
+  return data ? parseAPIData(data) : false
+}
+
+export async function fetchByCityName(city) {
+  const url = process.env.REACT_APP_API_CITY.replace('CITY', city)
+
+  const data = await fetchData(url)
+
+  return data ? parseAPIData(data) : false
 }

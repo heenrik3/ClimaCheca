@@ -1,21 +1,9 @@
-// import Spinner from './Spinner'
-
 function Weather(props) {
   const { weather } = props
 
-  // if (props.error) return <div className="weather">No data</div>
-
-  // if (props.loading) {
-  //   return (
-  //     <div className="weather">
-  //       <Spinner state={props.loading} />
-  //     </div>
-  //   )
-  // }
-
   return (
     <div className="weather">
-      <span className="title">Clima Hoje</span>
+      <span className="title">Clima agora em {weather.name}</span>
 
       <div className="weather__info">
         <div className="weather__item">
@@ -40,14 +28,14 @@ function Weather(props) {
           <i className="weather__icon fa-solid fa-cloud"></i>
           <div className="weather__details">
             <span>Pressão Atmosférica</span>
-            <span>{weather.temperature.pressure} hPa</span>
+            <span>{weather.pressure} hPa</span>
           </div>
         </div>
         <div className="weather__item">
           <i className="weather__icon fa-solid fa-water"></i>
           <div className="weather__details">
             <span>Umidade</span>
-            <span>{weather.temperature.humidity} %</span>
+            <span>{weather.humidity} %</span>
           </div>
         </div>
       </div>

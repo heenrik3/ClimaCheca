@@ -1,5 +1,5 @@
 .header
-    padding: 2rem
+    padding: 2rem 5rem
     border-bottom: 1px solid darken($secondary, 10%)
 
     text-align: center
@@ -9,15 +9,12 @@
     gap: 2rem
 
     @include respond(tab-land)
-        padding: 5rem
+        padding: 5rem 3rem
         flex-direction: column
         align-items: inherit
 
-    // @include respond(tab-port)
-    //     font-size: 52%
-
-    // @include respond(phone)
-    //     font-size: 55%
+    @include respond(tab-port)
+        padding: 5rem 2rem
 
     & .logo
         font-size: 4rem
@@ -47,7 +44,6 @@
             @include respond(tab-land)
 
                 text-align: center
-
 
         & i
             padding: 1rem

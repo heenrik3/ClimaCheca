@@ -21,7 +21,6 @@
     &__header
         display: flex
         justify-content: space-between
-        // gap: 1rem
 
     &__city
         display: flex
@@ -36,39 +35,43 @@
     
     &__temperature
         display: flex
-        flex-direction: column
-        flex: 1
+        justify-content: space-between
+
+        // flex: 1
         gap: 2rem
+
+        &--main
+            display: flex
+            flex-direction: column
+            gap: 1rem
 
         & h3
             font-size: 5rem
             font-weight: bold
-
-        &--details
-            padding: 1rem
-            background-color: white
-            @include default-border-radius
-
-            display: flex
-            gap: 2rem
-            justify-content: space-between
-
-            & div
-                color: $primary
-                
-                display: flex
-                flex-direction: column
-                align-items: center
-                justify-content: center
-                gap: 1rem
-
-                font-size: 1.8rem
-                // & i
         
-        // & span
-        //     background-color: white
-        //     color: $primary
 
+    &__details
+        padding: 2rem
+        @include default-border-radius
+        background: linear-gradient(90deg, rgba(105,134,255,1) 0%, rgba(255,100,100,1) 100%)
+
+        display: flex
+        gap: 2rem
+        justify-content: space-between
+
+        & div
+                        
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            gap: 1rem
+
+            font-size: 1.8rem
+
+    &__img
+        height: 10rem
+        
 
     &__sun
         font-weight: 600
@@ -86,7 +89,7 @@
         &__item
             padding: 2rem
             background-color: rgba(white, .3)
-            border: 2px white solid
+            // border: 2px white solid
             @include default-border-radius
 
             display: flex

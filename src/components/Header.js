@@ -46,7 +46,8 @@ function Header(props) {
       if (counter >= seconds) {
         clearInterval(timer)
         setTyping(false)
-        if (text) props.onSearch(text)
+
+        if (text) props.onSearch(text.trim().toLowerCase())
 
         searchTextInput.current.value = ''
         searchTextInput.current.blur()

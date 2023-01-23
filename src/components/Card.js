@@ -1,4 +1,3 @@
-import { countries, toCelsius } from './Extras'
 import Spinner from './Spinner'
 
 function Card(props) {
@@ -20,7 +19,7 @@ function Card(props) {
       <header className="card__header">
         <div className="card__city">
           <h1>{weather.name}</h1>
-          <span>{countries[weather.country]}</span>
+          <span>{weather.country}</span>
         </div>
 
         <span className="card__time">
@@ -29,17 +28,29 @@ function Card(props) {
       </header>
 
       <div className="card__temperature">
-        <h3>{toCelsius(weather.temperature.temp)}ºC</h3>
-        <span>Sensação: {toCelsius(weather.temperature.feels_like)}ºC</span>
-        <div className="card__temperature--details">
-          <div>
-            <i className="fa-solid fa-snowflake"></i>
-            <span>{toCelsius(weather.temperature.temp_min)}ºC</span>
-          </div>
-          <div>
-            <i className="fa-solid fa-fire"></i>
-            <span>{toCelsius(weather.temperature.temp_max)}ºC</span>
-          </div>
+        <div className="card__temperature--main">
+          <h3>{weather.temperature.now}ºC</h3>
+          <span>Sensação: {weather.temperature.feels}ºC</span>
+          <span>{weather.description}</span>
+        </div>
+
+        <picture className="card__pic">
+          <img
+            className="card__img"
+            src={`/images/${weather.art}`}
+            alt={'weather indicator'}
+          ></img>
+        </picture>
+      </div>
+
+      <div className="card__details">
+        <div>
+          <i className="fa-solid fa-snowflake"></i>
+          <span>{weather.temperature.min}ºC</span>
+        </div>
+        <div>
+          <i className="fa-solid fa-fire"></i>
+          <span>{weather.temperature.max}ºC</span>
         </div>
       </div>
 
@@ -50,10 +61,8 @@ function Card(props) {
             <i className="fa-regular fa-sun"></i>
 
             <div className="sunrise">
-              <span>Nascimento</span>
-              <span>
-                {new Date(weather.sunrise * 1000).toLocaleTimeString('pt-BR')}
-              </span>
+              <span>Nasce</span>
+              <span>{weather.sunrise}</span>
             </div>
 
             {/* <span>3 horas atrás</span> */}
@@ -62,16 +71,18 @@ function Card(props) {
             <i className="fa-regular fa-moon"></i>
 
             <div className="sunset">
-              <span>Pôr-do-sol</span>
-              <span>
-                {new Date(weather.sunset * 1000).toLocaleTimeString('pt-BR')}
-              </span>
+              <span>Pôe</span>
+              <span>{weather.sunset}</span>
             </div>
 
             {/* <span>Em 2 horas</span> */}
           </div>
         </div>
       </div>
+
+      <footer className="footer" style={{ textAlign: 'center' }}>
+        Desenvolvido por Henrique
+      </footer>
     </div>
   )
 }
