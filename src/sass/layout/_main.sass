@@ -1,0 +1,31 @@
+.main
+    margin: 5rem
+    background-color: white
+
+    @include default-border-radius
+    overflow: hidden
+
+    display: grid
+    grid-template-columns: 3fr 1fr
+    flex: 1
+
+    @include respond(tab-land)
+        margin: 3rem
+        grid-template-columns: 1fr
+        grid-template-rows: 3fr auto
+
+    @include respond(tab-port)
+        margin: 2rem
+
+    // @include respond(phone)
+    //     margin: 1rem
+
+
+    animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+
+    & section
+        // background-color: red
+
+        display: flex
+        flex-direction: column
+        flex: 1

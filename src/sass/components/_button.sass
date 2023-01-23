@@ -1,0 +1,21 @@
+.btn
+    @include default-border-radius
+    padding: 1.4rem 3rem
+    font-weight: bold
+    text-align: center
+
+    &--green
+        color: $primary
+        background-color: $tertiary
+
+        &:hover, &:focus, &:active
+            color: $primary
+            background-color: $secondary
+    
+    &--black
+        color: $tertiary
+        background-color: $primary
+
+        &:hover, &:focus, &:active
+            color: $primary
+            background-color: $tertiary

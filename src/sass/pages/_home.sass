@@ -1,0 +1,51 @@
+.search
+    // background-color: lightblue
+
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    flex: 1
+
+    &__wrapper
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+
+        gap: 2rem
+
+    &__logo
+        font-size: 3.6rem
+
+    &__input
+        border-radius: 5px
+        background-color: white
+
+        & input
+            min-height: 3.5rem
+            min-width: 30rem
+            padding: 1rem
+            background-color: transparent
+
+            text-align: center
+
+            &:disabled
+                opacity: .5
+                cursor: wait
+
+    &__btn
+        padding: 1rem
+        border-radius: 5px
+
+        color: white
+        background-color: #303030
+
+        &:hover
+            background-color: lighten(#303030, 40%)
+
+        &:disabled
+            opacity: .5
+            background-color: lighten(#303030, 40%)
+            // cursor: wait
+            cursor: not-allowed

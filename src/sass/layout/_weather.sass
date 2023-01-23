@@ -1,0 +1,47 @@
+.weather
+    padding: 4rem
+
+    display: flex
+    flex-direction: column
+    // flex: 1
+    gap: 2rem
+
+    @include respond(tab-port)
+        padding: 2rem
+
+    // @include respond(tab-port)
+    //     padding: 1rem
+
+
+    &__info
+        display: grid
+        grid-template-columns: auto auto
+        grid-template-rows: auto auto
+        gap: 2rem
+
+        @include respond(tab-port)
+            grid-template-columns: auto
+            grid-auto-rows: auto
+
+    &__item
+        padding: 3rem
+        background-color: $secondary
+        @include default-border-radius
+
+        display: flex
+        align-items: center
+        gap: 2rem
+        flex: 1
+    
+    &__icon
+        font-size: 3rem
+
+    &__details
+        display: flex
+        flex-direction: column
+
+        // font-size: 2rem
+
+        & span:nth-child(2)
+            
+            font-weight: bold

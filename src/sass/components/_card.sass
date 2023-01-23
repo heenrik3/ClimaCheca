@@ -1,0 +1,104 @@
+.card
+    padding: 4rem
+    color: white
+    background-color: $primary
+    
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    gap: 4rem
+    flex: 1
+
+    @include respond(tab-land)
+        padding: 3rem
+
+    @include respond(tab-port)
+        padding: 2rem
+
+    & .loader
+        border-color: white
+
+    &__header
+        display: flex
+        justify-content: space-between
+        // gap: 1rem
+
+    &__city
+        display: flex
+        flex-direction: column
+        gap: 1.5rem
+
+        font-size: 1.8rem
+
+    &__time
+        font-weight: bold
+        font-size: 2rem
+    
+    &__temperature
+        display: flex
+        flex-direction: column
+        flex: 1
+        gap: 2rem
+
+        & h3
+            font-size: 5rem
+            font-weight: bold
+
+        &--details
+            padding: 1rem
+            background-color: white
+            @include default-border-radius
+
+            display: flex
+            gap: 2rem
+            justify-content: space-between
+
+            & div
+                color: $primary
+                
+                display: flex
+                flex-direction: column
+                align-items: center
+                justify-content: center
+                gap: 1rem
+
+                font-size: 1.8rem
+                // & i
+        
+        // & span
+        //     background-color: white
+        //     color: $primary
+
+
+    &__sun
+        font-weight: 600
+        // font-size: 2rem
+
+        display: flex
+        flex-direction: column
+        gap: 1rem
+
+        &--wrapper
+            display: flex
+            flex-direction: column
+            gap: 1rem
+
+        &__item
+            padding: 2rem
+            background-color: rgba(white, .3)
+            border: 2px white solid
+            @include default-border-radius
+
+            display: flex
+            align-items: center
+            justify-content: space-between
+            gap: 2rem
+
+            & i
+                font-size: 2rem
+
+.sunrise, .sunset
+    display: flex
+    justify-content: space-between
+    gap: 1rem
+    flex: 1
