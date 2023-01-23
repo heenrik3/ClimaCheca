@@ -258,6 +258,7 @@ const climates = {
   haze: 'Névoa',
   rain: 'Chuvoso',
   drizzle: 'Garoa',
+  thunderstorm: 'Tempestade',
 }
 
 export function toCelsius(temp) {
@@ -265,6 +266,7 @@ export function toCelsius(temp) {
 }
 
 export function parseAPIData(data) {
+  // console.log(data)
   const climate = climates[data.weather[0].main.toLowerCase()]
   const description = climate ? climate : ''
   const art = climate
